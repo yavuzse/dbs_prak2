@@ -11,7 +11,7 @@ int
 db_login(const string &user, const string &credential, const string &host, const string &port, const string &database) {
     db_connection = PQsetdbLogin(host.c_str(), port.c_str(), nullptr, nullptr, database.c_str(), user.c_str(),
                                  credential.c_str());
-    std::cout << host << " " << port << " " << database << " " << user << " " << credential << std::endl;
+    std::cout << host << " " << port << " " << database << " " << user << std::endl;
     return PQstatus(db_connection) == CONNECTION_OK ? 0 : -1;
 }
 
@@ -233,7 +233,7 @@ int db_delete_hersteller(const string &hnr) {
 
 int db_delete() {
     string produkt_query("TRUNCATE TABLE produkt;");
-    string hersteller_query("TRUNCATE TABLE produkt;");
+    string hersteller_query("TRUNCATE TABLE hersteller;");
 
     pg_result *produkt = PQexec(db_connection, produkt_query.c_str());
 
