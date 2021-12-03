@@ -47,7 +47,7 @@ int main(int argc, char *argv[]) {
 
             char *arg = strtok(line.data(), " ");
             while (arg != nullptr) {
-                args.emplace_back(string(arg));
+                args.push_back(string(arg));
                 arg = strtok(nullptr, " ");
             }
             string lastArg = args.back();
@@ -55,7 +55,7 @@ int main(int argc, char *argv[]) {
                 lastArg = lastArg.substr(0, lastArg.size() - 1);
             }
             args.pop_back();
-            args.emplace_back(lastArg);
+            args.push_back(lastArg);
 
             if (args[0] == "n") {
                 db_drop_table("produkt");
